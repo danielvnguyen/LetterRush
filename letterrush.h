@@ -25,9 +25,9 @@ class hashTable
     int hashTwoValue;
 
     //Helper methods that shouldn't be visible will go here:
-    int findGreaterPrime(int value);
-
     bool isPrime(int value);
+
+    int findGreaterPrime(int value);
 
     int hornerMethod(string inputString, int value);
 
