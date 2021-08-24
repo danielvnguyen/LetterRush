@@ -1,4 +1,4 @@
-# LetterRush Description
+# What is Letter Rush?
 
 Letter Rush is a game about quickly typing words that contain
 the given characters. Each player has a limited number of lives,
