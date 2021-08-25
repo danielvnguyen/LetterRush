@@ -39,8 +39,6 @@ class hashTable
     
     hashTable();
 
-    hashTable(int size);
-
     ~hashTable();
 
     void insert(string inputString);
