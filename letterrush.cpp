@@ -105,7 +105,15 @@ hashTable::~hashTable()
 //robustness
 void hashTable::insert(string inputString)
 {
-
+    //Check if the string is already in the hash table or not
+    if (find(inputString) == false)
+    {
+        //Make insertion helper method or use recursion for robustness
+    }
+    else
+    {
+        cout << "The string already exists in the hash table" << endl;
+    } 
 }
 
 bool hashTable::find(string inputString)
