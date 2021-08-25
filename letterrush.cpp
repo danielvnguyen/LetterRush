@@ -55,19 +55,32 @@ int hashTable::findGreaterPrime(int value)
     return prime;
 }
 
+//Helper method to avoid overflow when generating string values
 int hashTable::hornerMethod(string inputString, int value)
 {
+    //get size of input string
+    int stringSize = inputString.length();
+    int lastHashValue = 0;
 
+    //for each character in the input string
+    for (int i = 0; i < stringSize; i++)
+    {   
+        //perform a multiplication by 32 and a modulo by the input value
+        lastHashValue = (32 * lastHashValue) + (inputString[i] - 96);
+        lastHashValue = lastHashValue % value;
+    }
+    
+    return lastHashValue;
 }
 
 int hashTable::hashFunctionOne(string inputString)
 {
-
+    return (hornerMethod(inputString, arraySize));
 }
 
 int hashTable::hashFunctionTwo(string inputString)
 {
-
+    return (hashTwoValue - (hornerMethod(inputString, hashTwoValue)));
 }
 
 //Public function implementations:
@@ -85,9 +98,11 @@ hashTable::hashTable()
 
 hashTable::~hashTable()
 {
-
+    //deallocate memory associated with array attribute
+    delete[] stringArray;
 }
 
+//robustness
 void hashTable::insert(string inputString)
 {
 
@@ -100,15 +115,17 @@ bool hashTable::find(string inputString)
 
 int hashTable::size()
 {
-
+    return currentSize;
 }
 
 int hashTable::maxSize()
 {
-
+    return arraySize;
 }
 
 double hashTable::loadFactor()
 {
-
+    return ((double)currentSize/arraySize);
 }
+
+//Dictionary functions:
