@@ -129,3 +129,9 @@ double hashTable::loadFactor()
 }
 
 //Dictionary functions:
+/*
+- reading dictionary into a hashTable object
+- checking if word is in said dictionary.
+- if so, insert into result vector
+- printing hashtable + positions, as well as result vector.
+*/
