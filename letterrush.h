@@ -59,5 +59,13 @@ class hashTable
 
 /*
 - Functions regarding dictionary, printing, and result vector here:
-
 */
+
+//for printing result vector
+void printVector(vector<string> result);
+
+//validating the given input string
+bool wordCheck(hashTable & dictionary, string inputString);
+
+//checking for duplicate input strings
+bool duplicateCheck(vector<string> & result, string inputString);

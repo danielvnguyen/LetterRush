@@ -229,9 +229,30 @@ double hashTable::loadFactor()
 }
 
 //Dictionary functions:
-/*
-- reading dictionary into a hashTable object
-- checking if word is in said dictionary.
-- if so, insert into result vector
-- printing result vector.
-*/
+
+//for printing result vector
+void printVector(vector<string> result)
+{
+    for (auto i = result.begin(); i != result.end(); ++i)
+    {
+        cout << *i << endl;
+    }
+}
+
+//for printing result vector
+void printVector(vector<string> result)
+{
+
+}
+
+//validating the given input string
+bool wordCheck(hashTable & dictionary, string inputString)
+{
+
+}
+
+//checking for duplicate input strings
+bool duplicateCheck(vector<string> & result, string inputString)
+{
+
+}
