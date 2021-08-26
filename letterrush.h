@@ -35,6 +35,8 @@ class hashTable
 
     int hashFunctionTwo(string inputString);
 
+    void insertHelper(string inputString);
+
     public:
     
     hashTable();

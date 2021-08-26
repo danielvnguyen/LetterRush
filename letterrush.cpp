@@ -1,6 +1,6 @@
 #include "letterrush.h"
 
-//Prviate function implementations:
+//Private function implementations:
 bool hashTable::isPrime(int value)
 {
     //Corner cases (if value is 1 or below, return false)
@@ -83,7 +83,35 @@ int hashTable::hashFunctionTwo(string inputString)
     return (hashTwoValue - (hornerMethod(inputString, hashTwoValue)));
 }
 
-//Public function implementations:
+void hashTable::insertHelper(string inputString)
+{
+    //obtain position to insert the given string 
+    int j = 0;
+    int index = hashFunctionOne(inputString) + (j*hashFunctionTwo(inputString));
+
+    //if the current position is open
+    if (stringArray[index] == "")
+    {
+        //insert string and increment current size
+        stringArray[index] = inputString;
+        currentSize++;
+    }
+    else
+    {
+        //otherwise, use double hashing to look for the next open position
+        while (stringArray[index] != "")
+        {
+            //increment the index to insert at with second hash function
+            j++;
+            index = hashFunctionOne(inputString) + (j*hashFunctionTwo(inputString));
+            index %= arraySize;
+        }
+        stringArray[index] = inputString;
+        currentSize++;
+    }
+}
+
+//Public function implementations:---------------------------------------------------------
 hashTable::hashTable()
 {
     arraySize = 700000;
@@ -102,23 +130,79 @@ hashTable::~hashTable()
     delete[] stringArray;
 }
 
-//robustness
 void hashTable::insert(string inputString)
 {
-    //Check if the string is already in the hash table or not
+    //check if the string is already in the hash table or not
     if (find(inputString) == false)
     {
-        //Make insertion helper method or use recursion for robustness
+        insertHelper(inputString);
+
+        //check if the load factor > 0.5 after insertion. If so, resize and rehash.
+        if (loadFactor() > 0.50)
+        {   
+            //create variables to hold the old array contents
+            int oldSize = arraySize;
+            string* oldArray = stringArray;
+
+            //obtain new size for the new array and allocate memory
+            int newSize = findGreaterPrime(arraySize*2);
+            string* newArray = new string[newSize];
+            //update attributes
+            arraySize = newSize;
+            hashTwoValue = findGreaterPrime(arraySize/2);
+            currentSize = 0;
+
+            //go through old array to find strings to insert
+            for (int i = 0; i < oldSize; i++)
+            {
+                if (oldArray[i] != "")
+                {
+                    insertHelper(oldArray[i]);
+                }
+            }
+        }
     }
     else
     {
-        cout << "The string already exists in the hash table" << endl;
+        cout << "The string has already been inserted." << endl;
     } 
 }
 
 bool hashTable::find(string inputString)
 {
+    //obtain position to insert the given string 
+    int j = 0;
+    int index = hashFunctionOne(inputString) + (j*hashFunctionTwo(inputString));
 
+    //if current position matches with the given string, return true
+    if (stringArray[index] == inputString)
+    {
+        return true;
+    }
+    //otherwise, if empty, return false
+    else if (stringArray[index] == "")
+    {
+        return false;
+    }
+    //otherwise, if not empty but does not match, go to the next position.
+    else
+    {
+        while (stringArray[index] != inputString && stringArray[index] != "")
+        {
+            j++;
+            index = hashFunctionOne(inputString) + (j*hashFunctionTwo(inputString));
+            index %= arraySize;
+        }
+        if (stringArray[index] == inputString)
+        {
+            return true;
+        }
+        else if (stringArray[index] == "")
+        {
+            return false;
+        }
+    }
+    return false;
 }
 
 int hashTable::size()
