@@ -17,8 +17,19 @@ int main()
     }
     file.close();
 
+    int numberOfPlayers = 0;
     cout << "Welcome to Letter Rush! How many people will be playing?: " << endl;
+
     //need to save the user input in a variable.
+    cin >> numberOfPlayers;
+
+    string playerName;
+    for (int i = 0; i < numberOfPlayers; i++)
+    {
+        cout << "Player " << i+1 << "!" << " What is your nickname?: " << endl;
+        cin >> playerName;
+        Player currentPlayer(playerName);
+    }
 
 
     return 0;

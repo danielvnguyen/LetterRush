@@ -251,3 +251,12 @@ bool duplicateCheck(vector<string> & usedWords, string inputString)
         return false;
     }
 }
+
+//Player function implementations:----------------------------------------
+
+Player::Player(string playerName)
+{
+    lives = 3;
+    score = 0;
+    nickname = playerName;
+}

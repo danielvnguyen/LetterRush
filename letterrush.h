@@ -76,5 +76,11 @@ class Player
     string nickname;
 
     public:
+    /*
+    - constructors, destructor, what other functions?
+    */
+    Player(string playerName);
+
+    //~Player();
 
 };
