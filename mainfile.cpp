@@ -17,6 +17,9 @@ int main()
     }
     file.close();
 
+    cout << "Welcome to Letter Rush! How many people will be playing?: " << endl;
+    //need to save the user input in a variable.
+
 
     return 0;
 }
