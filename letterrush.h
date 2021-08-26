@@ -66,3 +66,15 @@ void printVector(vector<string> usedWords);
 
 //checking for duplicate input strings
 bool duplicateCheck(vector<string> & usedWords, string inputString);
+
+//Player class
+class Player
+{
+    private:
+    int lives;
+    int score;
+    string nickname;
+
+    public:
+
+};
