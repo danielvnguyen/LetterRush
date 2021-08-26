@@ -111,6 +111,14 @@ void hashTable::insertHelper(string inputString)
     }
 }
 
+void hashTable::printTable()
+{
+    for (int i = 0; i < arraySize; i++)
+    {
+        cout << "String: " << stringArray[i] << ", " << "Position: " << i << endl;
+    }
+}
+
 //Public function implementations:---------------------------------------------------------
 hashTable::hashTable()
 {
@@ -225,5 +233,5 @@ double hashTable::loadFactor()
 - reading dictionary into a hashTable object
 - checking if word is in said dictionary.
 - if so, insert into result vector
-- printing hashtable + positions, as well as result vector.
+- printing result vector.
 */

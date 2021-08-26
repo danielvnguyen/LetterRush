@@ -37,6 +37,8 @@ class hashTable
 
     void insertHelper(string inputString);
 
+    void printTable();
+
     public:
     
     hashTable();
