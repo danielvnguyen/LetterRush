@@ -231,28 +231,23 @@ double hashTable::loadFactor()
 //Dictionary functions:
 
 //for printing result vector
-void printVector(vector<string> result)
+void printVector(vector<string> usedWords)
 {
-    for (auto i = result.begin(); i != result.end(); ++i)
+    for (auto i = usedWords.begin(); i != usedWords.end(); ++i)
     {
         cout << *i << endl;
     }
 }
 
-//for printing result vector
-void printVector(vector<string> result)
-{
-
-}
-
-//validating the given input string
-bool wordCheck(hashTable & dictionary, string inputString)
-{
-
-}
-
 //checking for duplicate input strings
-bool duplicateCheck(vector<string> & result, string inputString)
+bool duplicateCheck(vector<string> & usedWords, string inputString)
 {
-
+    if (count(usedWords.begin(), usedWords.end(), inputString) == true)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }

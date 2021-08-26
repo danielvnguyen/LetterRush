@@ -62,10 +62,7 @@ class hashTable
 */
 
 //for printing result vector
-void printVector(vector<string> result);
-
-//validating the given input string
-bool wordCheck(hashTable & dictionary, string inputString);
+void printVector(vector<string> usedWords);
 
 //checking for duplicate input strings
-bool duplicateCheck(vector<string> & result, string inputString);
+bool duplicateCheck(vector<string> & usedWords, string inputString);
