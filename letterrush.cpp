@@ -111,14 +111,6 @@ void hashTable::insertHelper(string inputString)
     }
 }
 
-void hashTable::printTable()
-{
-    for (int i = 0; i < arraySize; i++)
-    {
-        cout << "String: " << stringArray[i] << ", " << "Position: " << i << endl;
-    }
-}
-
 //Public function implementations:---------------------------------------------------------
 hashTable::hashTable()
 {
@@ -249,6 +241,14 @@ bool duplicateCheck(vector<string> & usedWords, string inputString)
     else
     {
         return false;
+    }
+}
+
+void hashTable::printTable()
+{
+    for (int i = 0; i < arraySize; i++)
+    {
+        cout << "String: " << stringArray[i] << ", " << "Position: " << i << endl;
     }
 }
 

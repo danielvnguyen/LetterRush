@@ -37,8 +37,6 @@ class hashTable
 
     void insertHelper(string inputString);
 
-    void printTable();
-
     public:
     
     hashTable();
@@ -55,6 +53,7 @@ class hashTable
 
     double loadFactor();
 
+    void printTable();
 };
 
 /*

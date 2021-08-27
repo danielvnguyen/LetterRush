@@ -22,15 +22,17 @@ int main()
 
     //need to save the user input in a variable.
     cin >> numberOfPlayers;
+    //array containing all of the players
+    Player* listOfPlayers[numberOfPlayers];
 
+    //obtain nicknames and initalize the player objects
     string playerName;
     for (int i = 0; i < numberOfPlayers; i++)
     {
         cout << "Player " << i+1 << "!" << " What is your nickname?: " << endl;
         cin >> playerName;
-        Player currentPlayer(playerName);
+        //Player (playerName);
     }
-
 
     return 0;
 }
