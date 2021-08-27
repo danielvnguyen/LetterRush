@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 using namespace std;
 
 //hashTable class to hold all of the valid words/strings:

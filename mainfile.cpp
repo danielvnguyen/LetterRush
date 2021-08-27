@@ -71,6 +71,7 @@ int main()
     while (stillPlay)
     {
         //Note: check string with .lower()
+        sleep(2);
         cout << "The round will now start!" << endl;
         bool stillPlayersLeft = true;
         
