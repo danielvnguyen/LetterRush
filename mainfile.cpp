@@ -78,14 +78,20 @@ int main()
         {
             for (int i = 0; i < numberOfPlayers; i++)
             {
-                Player currentPlayer = listOfPlayers[i];
-                cout << currentPlayer.nickname << ", it is your turn!" << endl;
+                //Checking for players that have been eliminated
+                if (listOfPlayers[i].lives == 0)
+                {
+                    continue;
+                }
+
+                cout << listOfPlayers[i].nickname << ", it is your turn!" << endl;
                 string character = oneCharacterTable.chooseRandom();
                 cout << "You have 5 seconds to type in a word with: " << character << endl;
                 string userInput;
                 cin >> userInput;
 
                 //Check if input word is a valid word, and if it's been used already:
+                //Valid = characters in word, word in dictionary, word not a duplicate.
                 if (dictTable.find(userInput) == true)
                 {
                     cout << "That word is valid!" << endl;
@@ -93,10 +99,10 @@ int main()
                 else
                 {
                     cout << "That word is not valid!" << endl;
-                    currentPlayer.lives -= 1;
-                    if (currentPlayer.lives == 0)
+                    listOfPlayers[i].lives -= 1;
+                    if (listOfPlayers[i].lives == 0)
                     {
-                        cout << currentPlayer.nickname << " is out!" << endl;
+                        cout << listOfPlayers[i].nickname << " is out!" << endl;
                     }
                 }
             }

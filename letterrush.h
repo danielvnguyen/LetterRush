@@ -95,3 +95,5 @@ bool duplicateCheck(vector<string> & usedWords, string inputString);
 bool nextRoundCheck();
 
 bool checkPlayers(Player* list, int size);
+
+//checking if the given character is inside of the input word
