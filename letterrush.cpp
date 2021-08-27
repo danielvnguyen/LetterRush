@@ -228,6 +228,21 @@ void hashTable::printTable()
     }
 }
 
+string hashTable::chooseRandom()
+{
+    bool trueValue = false;
+    while(!trueValue)
+    {
+        //do we need +1 here?
+        int randPosition = rand() % arraySize + 1;
+        if (stringArray[randPosition] != "")
+        {
+            trueValue = true;
+            return stringArray[randPosition];
+        }
+    }
+}
+
 //Player function implementations:----------------------------------------
 
 Player::Player()

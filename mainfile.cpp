@@ -16,6 +16,7 @@ int main()
         }
     }
     file.close();
+    dictTable.printTable();
 
     //create hash table for alphabet
     hashTable oneCharacterTable;
@@ -72,6 +73,13 @@ int main()
     {
         //Note: check string with .lower()
         cout << "The round will now start!" << endl;
+
+        //should be a for loop to traverse through the players here:
+        //also check if total (game) time is more than a minute, to up difficulty.
+        string character = oneCharacterTable.chooseRandom();
+        cout << "You have 5 seconds to type in a word with: " << character << endl;
+        string userInput;
+        cin >> userInput;
 
         //ask user if they to play another round
         if (nextRoundCheck() == false)

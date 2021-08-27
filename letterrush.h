@@ -7,6 +7,7 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <stdlib.h>
 using namespace std;
 
 //hashTable class to hold all of the valid words/strings:
@@ -54,6 +55,8 @@ class hashTable
     double loadFactor();
 
     void printTable();
+
+    string chooseRandom();
 };
 
 //Player class
