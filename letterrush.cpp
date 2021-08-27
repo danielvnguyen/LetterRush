@@ -124,6 +124,18 @@ hashTable::hashTable()
     hashTwoValue = findGreaterPrime(arraySize/2);
 }
 
+hashTable::hashTable(int size)
+{
+    arraySize = size;
+    stringArray = new string[arraySize];
+    for (int i = 0; i < arraySize; i++)
+    {
+        stringArray[i] = "";
+    }
+    currentSize = 0;
+    hashTwoValue = findGreaterPrime(arraySize/2);
+}
+
 hashTable::~hashTable()
 {
     //deallocate memory associated with array attribute
@@ -233,7 +245,8 @@ string hashTable::chooseRandom()
     bool trueValue = false;
     while(!trueValue)
     {
-        //do we need +1 here?
+        //seed to generate pseudo-random letters
+        srand(time(NULL));
         int randPosition = rand() % arraySize + 1;
         if (stringArray[randPosition] != "")
         {

@@ -8,7 +8,7 @@
 #include <vector>
 #include <algorithm>
 #include <stdlib.h>
-#include <ctime>
+#include <time.h>
 using namespace std;
 
 //hashTable class to hold all of the valid words/strings:
@@ -42,6 +42,8 @@ class hashTable
     public:
     
     hashTable();
+
+    hashTable(int size);
 
     ~hashTable();
 

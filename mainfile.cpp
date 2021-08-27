@@ -16,10 +16,9 @@ int main()
         }
     }
     file.close();
-    dictTable.printTable();
 
     //create hash table for alphabet
-    hashTable oneCharacterTable;
+    hashTable oneCharacterTable(60);
     string filenameTwo = "oneCharacter.txt";
     ifstream fileTwo(filenameTwo);
 
@@ -33,7 +32,7 @@ int main()
     fileTwo.close();
 
     //create hash table for combinations of two letters in alphabet
-    hashTable twoCharacterTable;
+    hashTable twoCharacterTable(1400);
     string filenameThree = "twoCharacters.txt";
     ifstream fileThree(filenameThree);
 
@@ -88,6 +87,6 @@ int main()
         }
     }
 
-
+    cout << "Thanks for playing Letter Rush!" << endl;
     return 0;
 }
