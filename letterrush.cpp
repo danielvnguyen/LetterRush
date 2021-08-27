@@ -220,6 +220,29 @@ double hashTable::loadFactor()
     return ((double)currentSize/arraySize);
 }
 
+void hashTable::printTable()
+{
+    for (int i = 0; i < arraySize; i++)
+    {
+        cout << "String: " << stringArray[i] << ", " << "Position: " << i << endl;
+    }
+}
+
+//Player function implementations:----------------------------------------
+
+Player::Player()
+{
+    lives = 3;
+    score = 0;
+}
+
+Player::Player(string playerName)
+{
+    lives = 3;
+    score = 0;
+    nickname = playerName;
+}
+
 //Dictionary functions:
 
 //for printing result vector
@@ -244,25 +267,28 @@ bool duplicateCheck(vector<string> & usedWords, string inputString)
     }
 }
 
-void hashTable::printTable()
+bool nextRoundCheck()
 {
-    for (int i = 0; i < arraySize; i++)
+    bool validResponse = false;
+    while(!validResponse)
     {
-        cout << "String: " << stringArray[i] << ", " << "Position: " << i << endl;
+        string userInput;
+        cout << "Would you like to move onto the next round?: [yes/no]" << endl;
+        cin >> userInput;
+
+        if (userInput == "yes")
+        {
+            validResponse = true;
+            return true;
+        }
+        else if (userInput == "no")
+        {
+            validResponse = true;
+            return false;
+        }
+        else
+        {
+            cout << "Sorry, please enter a valid response." << endl;
+        }
     }
-}
-
-//Player function implementations:----------------------------------------
-
-Player::Player()
-{
-    lives = 3;
-    score = 0;
-}
-
-Player::Player(string playerName)
-{
-    lives = 3;
-    score = 0;
-    nickname = playerName;
 }

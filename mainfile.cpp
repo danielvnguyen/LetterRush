@@ -22,7 +22,7 @@ int main()
 
     //need to save the user input in a variable.
     cin >> numberOfPlayers;
-    //array containing all of the players
+    //array containing all of the players. deallocate afterwards.
     Player* listOfPlayers = new Player[numberOfPlayers];
 
     //obtain nicknames and initalize the player objects
@@ -34,6 +34,21 @@ int main()
         Player currentPlayer(playerName);
         listOfPlayers[i] = currentPlayer;
     }
+
+    //Start initial round, and repeat (with same players, new scores, and reset lives)
+    //if user still wants to play.
+    bool stillPlay = true;
+    while (stillPlay)
+    {
+
+
+        //ask user if they to play another round
+        if (nextRoundCheck() == false)
+        {
+            stillPlay = false;
+        }
+    }
+
 
     return 0;
 }

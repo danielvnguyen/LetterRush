@@ -56,16 +56,6 @@ class hashTable
     void printTable();
 };
 
-/*
-- Functions regarding dictionary, printing, and result vector here:
-*/
-
-//for printing result vector
-void printVector(vector<string> usedWords);
-
-//checking for duplicate input strings
-bool duplicateCheck(vector<string> & usedWords, string inputString);
-
 //Player class
 class Player
 {
@@ -84,6 +74,16 @@ class Player
 
     Player(string playerName);
 
-    //~Player();
-
 };
+
+/*
+- Functions regarding dictionary, printing, and result vector here:
+*/
+
+//for printing result vector
+void printVector(vector<string> usedWords);
+
+//checking for duplicate input strings
+bool duplicateCheck(vector<string> & usedWords, string inputString);
+
+bool nextRoundCheck();
