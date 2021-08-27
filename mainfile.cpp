@@ -74,7 +74,7 @@ int main()
     while (stillPlay)
     {
         //Note: check string with .lower()
-        sleep(2);
+        sleep(1);
         cout << "The round will now start!" << endl;
 
         usedWords.clear();
@@ -89,10 +89,23 @@ int main()
                 {
                     continue;
                 }
-
+                sleep(1);
                 cout << listOfPlayers[i].nickname << ", it is your turn!" << endl;
+                //Check if round time is >1minute, if so, increase the difficulty.
                 string character = oneCharacterTable.chooseRandom();
-                cout << "You have 5 seconds to type in a word with: " << character << endl;
+                sleep(1);
+                cout << "You have 5 seconds to type in a word with the letter: " << character << endl;
+                //Make sure word is entered before time runs out.
+                for (int sec = 5; sec < 6; sec--)
+                {
+                    cout << sec << " ";
+                    sleep(1);
+                    if (sec == 0)
+                    {
+                        cout << "Time is out! You lose a life." << endl;
+                        break;
+                    }
+                }
                 string userInput;
                 cin >> userInput;
 
@@ -103,6 +116,7 @@ int main()
                 {
                     cout << "That word is valid!" << endl;
                     usedWords.push_back(userInput);
+                    //printVector(usedWords);
                 }
                 else
                 {
@@ -111,18 +125,35 @@ int main()
                     if (listOfPlayers[i].lives == 0)
                     {
                         cout << listOfPlayers[i].nickname << " is out!" << endl;
+
+                        //check if there's at least 2 players with lives left
+                        if (checkPlayers(listOfPlayers, numberOfPlayers) == false)
+                        {
+                            stillPlayersLeft = false;
+                        }
                     }
                 }
-            }
-
-            //check if there's at least 2 players with lives left
-            if (checkPlayers(listOfPlayers, numberOfPlayers) == false)
-            {
-                stillPlayersLeft = false;
             }
         }
         
         //Anounce winner of that round, and award them with +1 to their score.
+        for (int i = 0; i < numberOfPlayers; i++)
+        {
+            if (listOfPlayers[i].lives != 0)
+            {
+                cout << listOfPlayers[i].nickname << " won this round!" << endl;
+                listOfPlayers[i].score += 1;
+            }
+            //reset lives for next round
+            listOfPlayers[i].lives = 3;
+        }
+
+        //print scores of all of the players
+        cout << "Here are the current scores: " << endl;
+        for (int i = 0; i < numberOfPlayers; i++)
+        {
+            cout << listOfPlayers[i].nickname << " - Score: " << listOfPlayers[i].score << endl;
+        }
 
         //ask user if they to play another round
         if (nextRoundCheck() == false)
@@ -132,5 +163,7 @@ int main()
     }
 
     cout << "Thanks for playing Letter Rush!" << endl;
+    delete[] listOfPlayers;
+    //delete[] usedWords;
     return 0;
 }
