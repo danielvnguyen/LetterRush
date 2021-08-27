@@ -70,14 +70,18 @@ bool duplicateCheck(vector<string> & usedWords, string inputString);
 class Player
 {
     private:
+
+    public:
     int lives;
     int score;
     string nickname;
 
-    public:
     /*
     - constructors, destructor, what other functions?
     */
+
+    Player();   
+
     Player(string playerName);
 
     //~Player();

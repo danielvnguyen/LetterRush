@@ -254,6 +254,12 @@ void hashTable::printTable()
 
 //Player function implementations:----------------------------------------
 
+Player::Player()
+{
+    lives = 3;
+    score = 0;
+}
+
 Player::Player(string playerName)
 {
     lives = 3;
