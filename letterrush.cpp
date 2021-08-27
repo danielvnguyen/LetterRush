@@ -320,3 +320,23 @@ bool nextRoundCheck()
         }
     }
 }
+
+bool checkPlayers(Player* list, int size)
+{
+    int count = 0;
+
+    for (int i = 0; i < size; i++)
+    {
+        if (list[i].lives != 0)
+        {
+            count++;
+        }
+    }
+
+    if (count >= 2)
+    {
+        return true;
+    }
+    return false;
+
+}

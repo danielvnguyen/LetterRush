@@ -93,3 +93,5 @@ void printVector(vector<string> usedWords);
 bool duplicateCheck(vector<string> & usedWords, string inputString);
 
 bool nextRoundCheck();
+
+bool checkPlayers(Player* list, int size);

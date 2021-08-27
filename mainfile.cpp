@@ -48,7 +48,7 @@ int main()
 //----------------------------------------------------------------------------
 
     int numberOfPlayers = 0;
-    cout << "Welcome to Letter Rush! How many people will be playing?: " << endl;
+    cout << "Welcome to Letter Rush! How many people will be playing?: (must have at least 2 players)" << endl;
 
     //need to save the user input in a variable.
     cin >> numberOfPlayers;
@@ -72,13 +72,43 @@ int main()
     {
         //Note: check string with .lower()
         cout << "The round will now start!" << endl;
+        bool stillPlayersLeft = true;
+        
+        while (stillPlayersLeft)
+        {
+            for (int i = 0; i < numberOfPlayers; i++)
+            {
+                Player currentPlayer = listOfPlayers[i];
+                cout << currentPlayer.nickname << ", it is your turn!" << endl;
+                string character = oneCharacterTable.chooseRandom();
+                cout << "You have 5 seconds to type in a word with: " << character << endl;
+                string userInput;
+                cin >> userInput;
 
-        //should be a for loop to traverse through the players here:
-        //also check if total (game) time is more than a minute, to up difficulty.
-        string character = oneCharacterTable.chooseRandom();
-        cout << "You have 5 seconds to type in a word with: " << character << endl;
-        string userInput;
-        cin >> userInput;
+                //Check if input word is a valid word, and if it's been used already:
+                if (dictTable.find(userInput) == true)
+                {
+                    cout << "That word is valid!" << endl;
+                }
+                else
+                {
+                    cout << "That word is not valid!" << endl;
+                    currentPlayer.lives -= 1;
+                    if (currentPlayer.lives == 0)
+                    {
+                        cout << currentPlayer.nickname << " is out!" << endl;
+                    }
+                }
+            }
+
+            //check if there's at least 2 players with lives left
+            if (checkPlayers(listOfPlayers, numberOfPlayers) == false)
+            {
+                stillPlayersLeft = false;
+            }
+        }
+        
+        //Anounce winner of that round, and award them with +1 to their score.
 
         //ask user if they to play another round
         if (nextRoundCheck() == false)
