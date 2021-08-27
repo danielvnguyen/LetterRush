@@ -65,6 +65,9 @@ int main()
         listOfPlayers[i] = currentPlayer;
     }
 
+    //word bank to keep track of words that have been used
+    vector<string> usedWords;
+
     //Start initial round, and repeat (with same players, new scores, and reset lives)
     //if user still wants to play.
     bool stillPlay = true;
@@ -73,8 +76,10 @@ int main()
         //Note: check string with .lower()
         sleep(2);
         cout << "The round will now start!" << endl;
+
+        usedWords.clear();
+
         bool stillPlayersLeft = true;
-        
         while (stillPlayersLeft)
         {
             for (int i = 0; i < numberOfPlayers; i++)
@@ -93,9 +98,11 @@ int main()
 
                 //Check if input word is a valid word, and if it's been used already:
                 //Valid = characters in word, word in dictionary, word not a duplicate.
-                if (dictTable.find(userInput) == true)
+                if (dictTable.find(userInput) == true && duplicateCheck(usedWords, userInput) == false 
+                && characterCheck(userInput, character) == true)
                 {
                     cout << "That word is valid!" << endl;
+                    usedWords.push_back(userInput);
                 }
                 else
                 {

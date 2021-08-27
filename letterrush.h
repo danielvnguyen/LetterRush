@@ -98,3 +98,4 @@ bool nextRoundCheck();
 bool checkPlayers(Player* list, int size);
 
 //checking if the given character is inside of the input word
+bool characterCheck(string inputString, string character);

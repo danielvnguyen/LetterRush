@@ -340,3 +340,16 @@ bool checkPlayers(Player* list, int size)
     return false;
 
 }
+
+//checking if the given character is inside of the input word
+bool characterCheck(string inputString, string character)
+{
+    if (inputString.find(character) < inputString.length())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
