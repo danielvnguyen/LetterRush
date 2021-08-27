@@ -17,6 +17,36 @@ int main()
     }
     file.close();
 
+    //create hash table for alphabet
+    hashTable oneCharacterTable;
+    filename = "oneCharacter.txt";
+    ifstream file(filename);
+
+    if (file.is_open())
+    {
+        while (file >> word)
+        {
+            oneCharacterTable.insert(word);
+        }
+    }
+    file.close();
+
+    //create hash table for combinations of two letters in alphabet
+    hashTable twoCharacterTable;
+    filename = "twoCharacters.txt";
+    ifstream file(filename);
+
+    if (file.is_open())
+    {
+        while (file >> word)
+        {
+            twoCharacterTable.insert(word);
+        }
+    }
+    file.close();
+
+//----------------------------------------------------------------------------
+
     int numberOfPlayers = 0;
     cout << "Welcome to Letter Rush! How many people will be playing?: " << endl;
 
@@ -40,7 +70,8 @@ int main()
     bool stillPlay = true;
     while (stillPlay)
     {
-
+        //Note: check string with .lower()
+        cout << "The round will now start!" << endl;
 
         //ask user if they to play another round
         if (nextRoundCheck() == false)
