@@ -20,31 +20,31 @@ int main()
 
     //create hash table for alphabet
     hashTable oneCharacterTable;
-    filename = "oneCharacter.txt";
-    ifstream file(filename);
+    string filenameTwo = "oneCharacter.txt";
+    ifstream fileTwo(filenameTwo);
 
-    if (file.is_open())
+    if (fileTwo.is_open())
     {
-        while (file >> word)
+        while (fileTwo >> word)
         {
             oneCharacterTable.insert(word);
         }
     }
-    file.close();
+    fileTwo.close();
 
     //create hash table for combinations of two letters in alphabet
     hashTable twoCharacterTable;
-    filename = "twoCharacters.txt";
-    ifstream file(filename);
+    string filenameThree = "twoCharacters.txt";
+    ifstream fileThree(filenameThree);
 
-    if (file.is_open())
+    if (fileThree.is_open())
     {
-        while (file >> word)
+        while (fileThree >> word)
         {
             twoCharacterTable.insert(word);
         }
     }
-    file.close();
+    fileThree.close();
 
 //----------------------------------------------------------------------------
 

@@ -8,6 +8,7 @@
 #include <vector>
 #include <algorithm>
 #include <stdlib.h>
+#include <ctime>
 using namespace std;
 
 //hashTable class to hold all of the valid words/strings:
