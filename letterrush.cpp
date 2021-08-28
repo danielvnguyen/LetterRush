@@ -301,7 +301,7 @@ bool nextRoundCheck()
     while(!validResponse)
     {
         string userInput;
-        cout << "Would you like to move onto the next round?: [yes/no]" << endl;
+        cout << endl << "Would you like to move onto the next round?: [yes/no]" << endl;
         cin >> userInput;
 
         if (userInput == "yes")
@@ -316,7 +316,7 @@ bool nextRoundCheck()
         }
         else
         {
-            cout << "Sorry, please enter a valid response." << endl;
+            cout << endl << "Sorry, please enter a valid response." << endl;
         }
     }
 }

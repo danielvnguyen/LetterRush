@@ -64,7 +64,7 @@ int main()
     string playerName;
     for (int i = 0; i < numberOfPlayers; i++)
     {
-        cout << endl << "Player " << i+1 << "!" << " What is your nickname?: " << endl;
+        cout << endl << "Player " << i+1 << "!" << " What is your nickname?: (enter at least 1 character)" << endl;
         cin >> playerName;
         Player currentPlayer(playerName);
         listOfPlayers[i] = currentPlayer;
@@ -76,6 +76,7 @@ int main()
     //Start initial round, and repeat (with same players, new scores, and reset lives)
     //if user still wants to play.
     bool stillPlay = true;
+    bool stillPlayersLeft = true;
     while (stillPlay)
     {
         sleep(1);
@@ -83,11 +84,18 @@ int main()
 
         usedWords.clear();
 
-        bool stillPlayersLeft = true;
+        stillPlayersLeft = true;
         while (stillPlayersLeft)
         {
             for (int i = 0; i < numberOfPlayers; i++)
             {
+                //check if there's at least 2 players with lives left
+                if (checkPlayers(listOfPlayers, numberOfPlayers) == false)
+                {
+                    stillPlayersLeft = false;
+                    break;
+                }
+
                 //Checking for players that have been eliminated
                 if (listOfPlayers[i].lives == 0)
                 {
@@ -133,12 +141,6 @@ int main()
                     if (listOfPlayers[i].lives == 0)
                     {
                         cout << endl << listOfPlayers[i].nickname << " is out!" << endl;
-
-                        //check if there's at least 2 players with lives left
-                        if (checkPlayers(listOfPlayers, numberOfPlayers) == false)
-                        {
-                            stillPlayersLeft = false;
-                        }
                     }
                 }
             }
@@ -171,7 +173,7 @@ int main()
         }
     }
 
-    cout << endl << "Thanks for playing Letter Rush!" << endl;
+    cout << endl << "Thanks for playing Letter Rush by Daniel Nguyen!" << endl;
     delete[] listOfPlayers;
     //delete[] usedWords;
     return 0;
