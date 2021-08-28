@@ -135,7 +135,7 @@ int main()
             }
         }
         
-        //Anounce winner of that round, and award them with +1 to their score.
+        //Announce winner of that round, and award them with +1 to their score.
         for (int i = 0; i < numberOfPlayers; i++)
         {
             if (listOfPlayers[i].lives != 0)
