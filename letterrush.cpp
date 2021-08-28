@@ -247,7 +247,7 @@ string hashTable::chooseRandom()
     {
         //seed to generate pseudo-random letters
         srand(time(NULL));
-        int randPosition = rand() % arraySize + 1;
+        int randPosition = rand() % arraySize;
         if (stringArray[randPosition] != "")
         {
             trueValue = true;

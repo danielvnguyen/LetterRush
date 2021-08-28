@@ -16,7 +16,7 @@ int main()
         }
     }
     file.close();
-
+    
     //create hash table for alphabet
     hashTable oneCharacterTable(60);
     string filenameTwo = "oneCharacter.txt";
@@ -52,6 +52,11 @@ int main()
 
     //need to save the user input in a variable.
     cin >> numberOfPlayers;
+    if (numberOfPlayers <= 1)
+    {
+        cout << endl << "Sorry, you need at least 2 players." << endl;
+        exit(0);
+    }
     //array containing all of the players. deallocate afterwards.
     Player* listOfPlayers = new Player[numberOfPlayers];
 
@@ -59,8 +64,7 @@ int main()
     string playerName;
     for (int i = 0; i < numberOfPlayers; i++)
     {
-        cout << endl;
-        cout << "Player " << i+1 << "!" << " What is your nickname?: " << endl;
+        cout << endl << "Player " << i+1 << "!" << " What is your nickname?: " << endl;
         cin >> playerName;
         Player currentPlayer(playerName);
         listOfPlayers[i] = currentPlayer;
@@ -74,10 +78,8 @@ int main()
     bool stillPlay = true;
     while (stillPlay)
     {
-        //Note: check string with .lower()
         sleep(1);
-        cout << endl;
-        cout << "The round will now start!" << endl;
+        cout << endl << "The round will now start!" << endl;
 
         usedWords.clear();
 
@@ -92,12 +94,10 @@ int main()
                     continue;
                 }
                 sleep(1);
-                cout << endl;
-                cout << listOfPlayers[i].nickname << ", it is your turn!" << endl;
+                cout << endl << listOfPlayers[i].nickname << ", it is your turn!" << endl;
                 //Check if round time is >1minute, if so, increase the difficulty.
                 string character = oneCharacterTable.chooseRandom();
-                cout << endl;
-                cout << "You have 5 seconds to type in a word with the letter: " << character << endl;
+                cout << endl << "You have 5 seconds to type in a word with the letter: " << character << endl;
 
                 //Make sure word is entered before time runs out.
                 //while loop until user enters a word? Shouldn't wait for user afterwards.
@@ -108,7 +108,7 @@ int main()
                     sleep(1);
                     if (sec == 0)
                     {
-                        cout << "Time is out! You lose a life." << endl;
+                        cout << endl << "Time is out! You lose a life." << endl;
                         break;
                     }
                 }
@@ -122,20 +122,17 @@ int main()
                 if (dictTable.find(userInput) == true && duplicateCheck(usedWords, userInput) == false 
                 && characterCheck(userInput, character) == true)
                 {
-                    cout << endl;
-                    cout << "That word is valid!" << endl;
+                    cout << endl << "That word is valid!" << endl;
                     usedWords.push_back(userInput);
                     //printVector(usedWords);
                 }
                 else
                 {
-                    cout << endl;
-                    cout << "That word is not valid!" << endl;
+                    cout << endl << "That word is not valid!" << endl;
                     listOfPlayers[i].lives -= 1;
                     if (listOfPlayers[i].lives == 0)
                     {
-                        cout << endl;
-                        cout << listOfPlayers[i].nickname << " is out!" << endl;
+                        cout << endl << listOfPlayers[i].nickname << " is out!" << endl;
 
                         //check if there's at least 2 players with lives left
                         if (checkPlayers(listOfPlayers, numberOfPlayers) == false)
@@ -152,8 +149,7 @@ int main()
         {
             if (listOfPlayers[i].lives != 0)
             {
-                cout << endl;
-                cout << listOfPlayers[i].nickname << " won this round!" << endl;
+                cout << endl << listOfPlayers[i].nickname << " won this round!" << endl;
                 listOfPlayers[i].score += 1;
             }
             //reset lives for next round
@@ -161,8 +157,7 @@ int main()
         }
 
         //print scores of all of the players
-        cout << endl;
-        cout << "Here are the current scores: " << endl;
+        cout << endl << "Here are the current scores: " << endl;
         for (int i = 0; i < numberOfPlayers; i++)
         {
             cout << endl;
@@ -176,8 +171,7 @@ int main()
         }
     }
 
-    cout << endl;
-    cout << "Thanks for playing Letter Rush!" << endl;
+    cout << endl << "Thanks for playing Letter Rush!" << endl;
     delete[] listOfPlayers;
     //delete[] usedWords;
     return 0;
