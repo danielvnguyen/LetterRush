@@ -105,23 +105,12 @@ int main()
                 cout << endl << listOfPlayers[i].nickname << ", it is your turn!" << endl;
                 //Check if round time is >1minute, if so, increase the difficulty.
                 string character = oneCharacterTable.chooseRandom();
+                sleep(1);
                 cout << endl << "You have 5 seconds to type in a word with the letter: " << character << endl;
 
                 //Make sure word is entered before time runs out.
-                //while loop until user enters a word? Shouldn't wait for user afterwards.
-                /*
-                for (int sec = 5; sec < 6; sec--)
-                {
-                    cout << sec << endl;
-                    sleep(1);
-                    if (sec == 0)
-                    {
-                        cout << endl << "Time is out! You lose a life." << endl;
-                        break;
-                    }
-                }
-                */
-                //Obtain the user input
+                //Shouldn't wait for user afterwards. Don't block the user input w/ countdown.
+
                 string userInput;
                 cin >> userInput;
 
