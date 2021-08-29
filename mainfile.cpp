@@ -84,6 +84,11 @@ int main()
         usedWords.clear();
 
         stillPlayersLeft = true;
+        int sec = 5;
+        int setTime = 60;
+        bool difficultyUp = false;
+        time_t roundTime = time(NULL);
+
         //While there are still players left
         while (stillPlayersLeft)
         {
@@ -101,16 +106,34 @@ int main()
                 {
                     continue;
                 }
+
+                //Check if round time has gone over a minute, if so, increase difficulty:
+                if (difftime(time(NULL), roundTime) >= setTime)
+                {
+                    cout << endl << "...Difficulty is increasing!" << endl;
+                    difficultyUp = true;
+                }
+
                 sleep(1);
                 cout << endl << listOfPlayers[i].nickname << ", it is your turn!" << endl;
-                //Check if round time is >1minute, if so, increase the difficulty.
-                string character = oneCharacterTable.chooseRandom();
+
+                string character;
+                if (difficultyUp == true)
+                {
+                    sec = 3;
+                    character = twoCharacterTable.chooseRandom();
+                }
+                else
+                {
+                    character = oneCharacterTable.chooseRandom();
+                }
+
                 sleep(1);
-                cout << endl << "You have 5 seconds to type in a valid word with the letter: " << character << endl;
+                cout << endl << "You have " << sec << " seconds to type in a valid word with the letter: " << character << endl;
 
                 bool validWord = false;
                 string userInput;
-                time_t before = time(NULL);
+                time_t start = time(NULL);
 
                 //Keep checking if user has input a valid otherwise, otherwise, time will run out.
                 while (!validWord)
@@ -119,9 +142,9 @@ int main()
                     cin >> userInput;
                     
                     //if time runs out
-                    if (difftime(time(NULL), before) >= 5)
+                    if (difftime(time(NULL), start) >= sec)
                     {
-                        cout << endl << "Didn't enter in 5 seconds! You lose a life :(" << endl;
+                        cout << endl << "Didn't enter in " << sec << " seconds! You lose a life :(" << endl;
                         listOfPlayers[i].lives -= 1;
                         if (listOfPlayers[i].lives == 0)
                         {

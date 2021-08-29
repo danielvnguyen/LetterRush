@@ -172,6 +172,9 @@ void hashTable::insert(string inputString)
                     insertHelper(oldArray[i]);
                 }
             }
+
+            delete[] oldArray;
+            stringArray = newArray;
         }
     }
     else
@@ -254,6 +257,7 @@ string hashTable::chooseRandom()
             return stringArray[randPosition];
         }
     }
+    return 0;
 }
 
 //Player function implementations:----------------------------------------
@@ -319,6 +323,7 @@ bool nextRoundCheck()
             cout << endl << "Sorry, please enter a valid response." << endl;
         }
     }
+    return false;
 }
 
 bool checkPlayers(Player* list, int size)
