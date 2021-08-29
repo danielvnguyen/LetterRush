@@ -73,10 +73,9 @@ int main()
     //word bank to keep track of words that have been used
     vector<string> usedWords;
 
-    //Start initial round, and repeat (with same players, new scores, and reset lives)
-    //if user still wants to play.
     bool stillPlay = true;
     bool stillPlayersLeft = true;
+    //While the user still wants to play
     while (stillPlay)
     {
         sleep(1);
@@ -85,6 +84,7 @@ int main()
         usedWords.clear();
 
         stillPlayersLeft = true;
+        //While there are still players left
         while (stillPlayersLeft)
         {
             for (int i = 0; i < numberOfPlayers; i++)
@@ -106,30 +106,52 @@ int main()
                 //Check if round time is >1minute, if so, increase the difficulty.
                 string character = oneCharacterTable.chooseRandom();
                 sleep(1);
-                cout << endl << "You have 5 seconds to type in a word with the letter: " << character << endl;
+                cout << endl << "You have 5 seconds to type in a valid word with the letter: " << character << endl;
 
-                //Make sure word is entered before time runs out.
-                //Shouldn't wait for user afterwards. Don't block the user input w/ countdown.
-
+                bool validWord = false;
                 string userInput;
-                cin >> userInput;
+                time_t before = time(NULL);
 
-                //Check if input word is a valid word, and if it's been used already:
-                //Valid = characters in word, word in dictionary, word not a duplicate.
-                if (dictTable.find(userInput) == true && duplicateCheck(usedWords, userInput) == false 
-                && characterCheck(userInput, character) == true)
+                //Keep checking if user has input a valid otherwise, otherwise, time will run out.
+                while (!validWord)
                 {
-                    cout << endl << "That word is valid!" << endl;
-                    usedWords.push_back(userInput);
-                    //printVector(usedWords);
-                }
-                else
-                {
-                    cout << endl << "That word is not valid!" << endl;
-                    listOfPlayers[i].lives -= 1;
-                    if (listOfPlayers[i].lives == 0)
+                    //obtain user input
+                    cin >> userInput;
+                    
+                    //if time runs out
+                    if (difftime(time(NULL), before) >= 5)
                     {
-                        cout << endl << listOfPlayers[i].nickname << " is out!" << endl;
+                        cout << endl << "Didn't enter in 5 seconds! You lose a life :(" << endl;
+                        listOfPlayers[i].lives -= 1;
+                        if (listOfPlayers[i].lives == 0)
+                        {
+                            cout << endl << listOfPlayers[i].nickname << " is out!" << endl;
+                        }
+                        break;
+                    }
+                    //go through word validity cases
+                    else if (dictTable.find(userInput) == false)
+                    {
+                        cout << endl << "That word does not exist! Try again:" << endl;
+                        continue;
+                    }
+                    else if (duplicateCheck(usedWords, userInput) == true)
+                    {
+                        cout << endl << "That word has already been used! Try again:" << endl;
+                        continue;
+                    }
+                    else if (characterCheck(userInput, character) == false)
+                    {
+                        cout << endl << "That word doesn't contain the given letter! Try again:" << endl;
+                        continue;
+                    }
+                    //if user input passes all of the cases
+                    else
+                    {
+                        cout << endl << "That word is valid!" << endl;
+                        usedWords.push_back(userInput);
+                        validWord = true;
+                        continue;
                     }
                 }
             }
