@@ -209,6 +209,5 @@ int main()
 
     cout << endl << "Thanks for playing Letter Rush by Daniel Nguyen!" << endl;
     delete[] listOfPlayers;
-    //delete[] usedWords;
     return 0;
 }
