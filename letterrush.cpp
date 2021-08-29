@@ -220,16 +220,6 @@ bool hashTable::find(string inputString)
     return false;
 }
 
-int hashTable::size()
-{
-    return currentSize;
-}
-
-int hashTable::maxSize()
-{
-    return arraySize;
-}
-
 double hashTable::loadFactor()
 {
     return ((double)currentSize/arraySize);
@@ -275,16 +265,7 @@ Player::Player(string playerName)
     nickname = playerName;
 }
 
-//Dictionary functions:
-
-//for printing result vector
-void printVector(vector<string> usedWords)
-{
-    for (auto i = usedWords.begin(); i != usedWords.end(); ++i)
-    {
-        cout << *i << endl;
-    }
-}
+//Miscellaneous function implementations:
 
 //checking for duplicate input strings
 bool duplicateCheck(vector<string> & usedWords, string inputString)

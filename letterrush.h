@@ -52,10 +52,6 @@ class hashTable
 
     bool find(string inputString);
 
-    int size();
-
-    int maxSize();
-
     double loadFactor();
 
     void printTable();
@@ -83,12 +79,7 @@ class Player
 
 };
 
-/*
-- Functions regarding dictionary, printing, and result vector here:
-*/
-
-//for printing result vector
-void printVector(vector<string> usedWords);
+//Miscellaneous functions to help with the game:
 
 //checking for duplicate input strings
 bool duplicateCheck(vector<string> & usedWords, string inputString);
