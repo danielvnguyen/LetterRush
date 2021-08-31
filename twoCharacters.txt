@@ -59,7 +59,6 @@ cf
 cg
 ch
 ci
-cj
 ck
 cl
 cm
@@ -144,7 +143,6 @@ fm
 fn
 fo
 fp
-fq
 fr
 fs
 ft
@@ -177,7 +175,6 @@ gt
 gu
 gv
 gw
-gx
 gy
 gz
 ha
@@ -203,7 +200,6 @@ ht
 hu
 hv
 hw
-hx
 hy
 hz
 ia
@@ -237,7 +233,6 @@ jb
 jc
 jd
 je
-jf
 jg
 jh
 ji
@@ -248,16 +243,13 @@ jm
 jn
 jo
 jp
-jq
 jr
 js
 jt
 ju
 jv
 jw
-jx
 jy
-jz
 ka
 kb
 kc
@@ -415,16 +407,12 @@ px
 py
 pz
 qa
-qb
-qc
 qd
 qe
 qf
 qg
 qh
 qi
-qj
-qk
 ql
 qm
 qn
@@ -437,9 +425,7 @@ qt
 qu
 qv
 qw
-qx
 qy
-qz
 ra
 rb
 rc
@@ -489,7 +475,6 @@ st
 su
 sv
 sw
-sx
 sy
 sz
 ta
@@ -549,7 +534,6 @@ vb
 vc
 vd
 ve
-vf
 vg
 vh
 vi
@@ -560,14 +544,12 @@ vm
 vn
 vo
 vp
-vq
 vr
 vs
 vt
 vu
 vv
 vw
-vx
 vy
 vz
 wa
@@ -593,7 +575,6 @@ wt
 wu
 wv
 ww
-wx
 wy
 wz
 xa
@@ -605,7 +586,6 @@ xf
 xg
 xh
 xi
-xj
 xk
 xl
 xm
@@ -671,6 +651,5 @@ zt
 zu
 zv
 zw
-zx
 zy
 zz
