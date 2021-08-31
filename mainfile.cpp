@@ -1,5 +1,8 @@
 #include "letterrush.h"
 
+//Credit to 'dwyl' for the dictionary file.
+//https://github.com/dwyl
+
 int main()
 {
     //create hash table object for dictionary
