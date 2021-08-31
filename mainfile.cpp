@@ -84,7 +84,7 @@ int main()
         usedWords.clear();
 
         stillPlayersLeft = true;
-        int sec = 5;
+        int sec = 10;
         int setTime = 60;
         bool difficultyUp = false;
         time_t roundTime = time(NULL);
@@ -108,7 +108,7 @@ int main()
                 }
 
                 //Check if round time has gone over a minute, if so, increase difficulty:
-                if (difftime(time(NULL), roundTime) >= setTime)
+                if (difftime(time(NULL), roundTime) >= setTime && difficultyUp == false)
                 {
                     cout << endl << "...Difficulty is increasing!" << endl;
                     difficultyUp = true;
@@ -120,7 +120,7 @@ int main()
                 string character;
                 if (difficultyUp == true)
                 {
-                    sec = 3;
+                    sec = 5;
                     character = twoCharacterTable.chooseRandom();
                 }
                 else

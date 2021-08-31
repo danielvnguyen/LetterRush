@@ -114,7 +114,7 @@ void hashTable::insertHelper(string inputString)
 //Public function implementations:---------------------------------------------------------
 hashTable::hashTable()
 {
-    arraySize = 700000;
+    arraySize = 1000000;
     stringArray = new string[arraySize];
     for (int i = 0; i < arraySize; i++)
     {
