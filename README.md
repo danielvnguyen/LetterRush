@@ -1,5 +1,7 @@
 # What is Letter Rush?
 
+<img src="https://github.com/danielvnguyen/LetterRush/blob/main/letterrush_img.jpg" width="600">
+
 Letter Rush is a text-UI game about quickly typing words that contain
 the given characters. Each player has a limited number of lives,
 and if the timer runs out before you can enter a valid word,
